@@ -1,0 +1,85 @@
+<div style="max-width:1120px;margin:0 auto;font-family:Arial,Helvetica,sans-serif;color:#252335;line-height:1.65;background:#ffffff;">
+  <section style="padding:44px 36px 36px;background:#f5f0f4;border-radius:16px;">
+    <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+      <img src="icon.png" alt="Current Error Traceback module icon" width="88" height="88" style="width:88px;height:88px;"/>
+      <div><p style="margin:0 0 6px;color:#714b67;font-size:12px;font-weight:bold;letter-spacing:2px;">ODOO 18 · DEVELOPER TOOL</p>
+      <h1 style="margin:0;font-size:38px;line-height:1.2;font-weight:700;color:#32283b;">Current Error Traceback</h1></div>
+    </div>
+    <p style="font-size:21px;line-height:1.55;max-width:790px;margin:25px 0 18px;">See the latest error. Read the complete traceback.<br/>Open it from a URL you choose in Settings.</p>
+    <p style="max-width:820px;color:#625b6b;margin:0;">A focused diagnostic viewer for unexpected Odoo request failures. Prepare your administrator browser while Odoo is healthy, then use the standalone page when normal database routing fails.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:25px;">
+      <span style="background:#fff;border:1px solid #e0d4dc;border-radius:18px;padding:6px 13px;font-size:12px;">Latest error only</span>
+      <span style="background:#fff;border:1px solid #e0d4dc;border-radius:18px;padding:6px 13px;font-size:12px;">Full Python traceback</span>
+      <span style="background:#fff;border:1px solid #e0d4dc;border-radius:18px;padding:6px 13px;font-size:12px;">No server-wide module entry</span>
+    </div>
+  </section>
+
+  <section style="padding:36px 28px 20px;">
+    <p style="font-size:12px;letter-spacing:2px;font-weight:bold;color:#714b67;margin:0 0 8px;">ONE PAGE. THE DETAILS YOU NEED.</p>
+    <h2 style="font-size:27px;line-height:1.3;margin:0 0 12px;">Find the exception behind the error.</h2>
+    <p style="color:#625b6b;margin:0 0 20px;">The exception, request path, UTC timestamp and full stack trace stay together. Each newly captured error replaces the previous one for that database.</p>
+    <div style="border:1px solid #e0e1e7;border-radius:12px;overflow:hidden;">
+      <img src="traceback_preview.png" alt="Example traceback page showing exception details, request information and the complete Python stack trace" style="width:100%;height:auto;display:block;"/>
+    </div>
+    <p style="font-size:12px;color:#7b7381;margin:10px 0 0;">Illustrative preview with example data. No customer database information is shown.</p>
+  </section>
+
+  <section style="padding:20px 28px 30px;">
+    <div style="display:flex;flex-wrap:wrap;gap:16px;">
+      <div style="flex:1 1 260px;padding:22px;background:#f8f7fa;border:1px solid #eeebf0;border-radius:10px;">
+        <h3 style="font-size:18px;margin:0 0 8px;color:#49364a;">Your controller name</h3>
+        <p style="margin:0;color:#625b6b;">Set <code>/my_error</code> in debug Settings. Use <strong>Open traceback</strong> to open the saved URL for the right database.</p>
+      </div>
+      <div style="flex:1 1 260px;padding:22px;background:#f8f7fa;border:1px solid #eeebf0;border-radius:10px;">
+        <h3 style="font-size:18px;margin:0 0 8px;color:#49364a;">Prepared emergency access</h3>
+        <p style="margin:0;color:#625b6b;">An authorized browser can reach the viewer before normal database routing, once the addon has loaded in the worker.</p>
+      </div>
+      <div style="flex:1 1 260px;padding:22px;background:#f8f7fa;border:1px solid #eeebf0;border-radius:10px;">
+        <h3 style="font-size:18px;margin:0 0 8px;color:#49364a;">One current record</h3>
+        <p style="margin:0;color:#625b6b;">Complete error output is saved per database. No growing history list, no previous errors to sift through.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:30px 28px;background:#faf9fb;border-top:1px solid #eee9ef;border-bottom:1px solid #eee9ef;">
+    <h2 style="font-size:27px;margin:0 0 18px;">Set it up in four steps</h2>
+    <ol style="margin:0;padding-left:25px;">
+      <li style="padding:0 0 14px 6px;"><strong>Install the matching addon.</strong><br/>Deploy the <code>show_traceback</code> folder, reload all workers and install or upgrade it in Apps. Remove the Apps filter when searching for this technical addon.</li>
+      <li style="padding:0 0 14px 6px;"><strong>Choose the URL in debug Settings.</strong><br/>As a Settings administrator, enable developer mode and open <strong>Settings → Error Traceback</strong>. Enter a name such as <code>my_error</code>.</li>
+      <li style="padding:0 0 14px 6px;"><strong>Save and authorize your browser.</strong><br/>Click <strong>Save</strong>, then <strong>Open traceback</strong> while Odoo is working. Repeat this after upgrading from an older package.</li>
+      <li style="padding-left:6px;"><strong>Reproduce the failure and refresh.</strong><br/>Use the same browser and hostname to open <code>http://localhost:8069/my_error</code>. The page shows the latest captured exception.</li>
+    </ol>
+  </section>
+
+  <section style="padding:32px 28px;">
+    <h2 style="font-size:26px;margin:0 0 16px;">Access &amp; operating limits</h2>
+    <div style="padding:20px 24px;border-left:4px solid #714b67;background:#f6f2f6;margin-bottom:22px;">
+      <p style="margin:0;"><strong>Browser authorization lasts up to eight hours.</strong> It uses a separate HttpOnly cookie issued after administrator authentication. It survives Odoo session rotation and logout. Delete the <code>odoo_traceback_*</code> browser cookie to end access early.</p>
+    </div>
+    <ul style="padding-left:23px;color:#625b6b;">
+      <li style="margin-bottom:9px;">The addon must load successfully in each serving worker before a failure. It cannot serve a page when the Odoo process is stopped.</li>
+      <li style="margin-bottom:9px;">Authorize the browser in advance. A different browser or expired grant needs normal administrator authentication while Odoo is healthy.</li>
+      <li style="margin-bottom:9px;">Only newly captured unexpected request exceptions appear. Expected user/access errors and HTTP 4xx responses are excluded.</li>
+      <li style="margin-bottom:9px;">Workers must share Odoo's writable data directory. Startup failures before addon loading and background-job errors may still need server logs.</li>
+      <li>Installing Python addons requires deployment and a worker reload. Changing the configured URL afterward needs only Save.</li>
+    </ul>
+  </section>
+
+  <section style="margin:0 28px 32px;padding:24px;border:1px solid #e3dde6;border-radius:12px;">
+    <h2 style="font-size:22px;margin:0 0 14px;">Package details</h2>
+    <table style="width:100%;border-collapse:collapse;font-size:14px;">
+      <tbody>
+        <tr><th style="text-align:left;padding:9px 12px 9px 0;width:36%;border-bottom:1px solid #eee;">Odoo version</th><td style="padding:9px 0;border-bottom:1px solid #eee;">18</td></tr>
+        <tr><th style="text-align:left;padding:9px 12px 9px 0;border-bottom:1px solid #eee;">Module version</th><td style="padding:9px 0;border-bottom:1px solid #eee;">18.0.7.2.0</td></tr>
+        <tr><th style="text-align:left;padding:9px 12px 9px 0;border-bottom:1px solid #eee;">Dependencies</th><td style="padding:9px 0;border-bottom:1px solid #eee;">base, web</td></tr>
+        <tr><th style="text-align:left;padding:9px 12px 9px 0;">License</th><td style="padding:9px 0;">LGPL-3</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:#7b7381;margin:15px 0 0;">Validated with local Odoo 18 imports, access-schema/XML checks and 23 isolated regression tests. Live database installation still requires verification. Full documentation is included in <strong>read.md</strong>.</p>
+  </section>
+
+  <footer style="border-top:1px solid #eee9ef;padding:26px 28px 34px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;">
+    <div><p style="margin:0;color:#7b7381;font-size:12px;">CREATED BY</p><p style="font-weight:bold;font-size:18px;margin:2px 0;">shuhaife binhamza</p></div>
+    <a href="https://shuhaife.pages.dev/" target="_blank" rel="noopener noreferrer" style="color:#714b67;font-weight:bold;text-decoration:none;border:1px solid #d8cbd5;border-radius:6px;padding:9px 18px;">Visit portfolio ↗</a>
+  </footer>
+</div>

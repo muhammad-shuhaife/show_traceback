@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_traceback" model="ir.ui.view">
+        <field name="name">res.config.settings.form.traceback</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app name="show_traceback" string="Error Traceback" groups="base.group_no_one">
+                    <block title="Current Error" groups="base.group_no_one">
+                        <setting string="Traceback controller name"
+                                 help="Enter traceback or /my_error. Save, then open that path on this Odoo server. Only the latest error is shown to Settings administrators.">
+                            <field name="traceback_controller_path" placeholder="/traceback"/>
+                            <div class="mt16">
+                                <button name="action_open_traceback" type="object" string="Open traceback" icon="fa-external-link" class="btn-link"/>
+                            </div>
+                            <div class="text-muted">Save first. Emergency access is enabled for this browser for 8 hours.</div>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>
