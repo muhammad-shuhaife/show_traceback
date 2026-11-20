@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,operation,domain
+access_traceback_log_admin,traceback.log admin,model_traceback_log,base.group_system,rd,
